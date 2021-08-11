@@ -13,7 +13,7 @@ class Api::V1::CharactersController < Api::V1::GraphitiController
     character = CharacterResource.build(params)
 
     if character.save
-      render jsonapi: character, status: 201
+      render jsonapi: character, status: :created
     else
       render jsonapi_errors: character
     end
@@ -33,7 +33,7 @@ class Api::V1::CharactersController < Api::V1::GraphitiController
     character = CharacterResource.find(params)
 
     if character.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: character
     end

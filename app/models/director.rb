@@ -1,10 +1,10 @@
-require 'open-uri'
+require "open-uri"
 class Director < ApplicationRecord
   before_validation :geocode_image
 
   def geocode_image
-    if self.image.present?
-      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(self.image)}"
+    if image.present?
+      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(image)}"
 
       raw_data = open(url).read
 
@@ -22,14 +22,14 @@ class Director < ApplicationRecord
   # Direct associations
 
   has_many   :filmography,
-             :class_name => "Movie",
-             :dependent => :destroy
+             class_name: "Movie",
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :characters,
-             :through => :filmography,
-             :source => :roles
+             through: :filmography,
+             source: :roles
 
   # Validations
 
@@ -38,5 +38,4 @@ class Director < ApplicationRecord
   def to_s
     name
   end
-
 end

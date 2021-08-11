@@ -1,10 +1,10 @@
-require 'open-uri'
+require "open-uri"
 class Actor < ApplicationRecord
   before_validation :geocode_image
 
   def geocode_image
-    if self.image.present?
-      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(self.image)}"
+    if image.present?
+      url = "https://maps.googleapis.com/maps/api/geocode/json?key=#{ENV['GMAP_API_KEY']}&address=#{URI.encode(image)}"
 
       raw_data = open(url).read
 
@@ -22,15 +22,15 @@ class Actor < ApplicationRecord
   # Direct associations
 
   has_many   :roles,
-             :class_name => "Character",
-             :foreign_key => "actors_id",
-             :dependent => :destroy
+             class_name: "Character",
+             foreign_key: "actors_id",
+             dependent: :destroy
 
   # Indirect associations
 
   has_many   :movies,
-             :through => :roles,
-             :source => :movie
+             through: :roles,
+             source: :movie
 
   # Validations
 
@@ -39,5 +39,4 @@ class Actor < ApplicationRecord
   def to_s
     name
   end
-
 end

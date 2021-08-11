@@ -21,5 +21,4 @@ class DirectorResource < ApplicationResource
       end
     end
   end
-
 end
