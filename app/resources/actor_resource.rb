@@ -9,6 +9,10 @@ class ActorResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :roles,
+             resource: CharacterResource,
+             foreign_key: :actors_id
+
   # Indirect associations
 
 end
