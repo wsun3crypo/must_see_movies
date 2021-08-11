@@ -42,8 +42,14 @@ class CharactersController < ApplicationController
   # DELETE /characters/1
   def destroy
     @character.destroy
-    redirect_to characters_url, notice: 'Character was successfully destroyed.'
+    message = "Character was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to characters_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
