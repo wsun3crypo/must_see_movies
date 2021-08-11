@@ -8,6 +8,7 @@ class ActorsController < ApplicationController
 
   # GET /actors/1
   def show
+    @character = Character.new
   end
 
   # GET /actors/new
