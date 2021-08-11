@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
   # Direct associations
 
+  belongs_to :director
+
   has_many   :roles,
              :class_name => "Character",
              :dependent => :destroy
