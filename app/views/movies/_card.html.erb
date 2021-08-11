@@ -32,7 +32,11 @@
 
       <dt>Image</dt>
       <!-- Display image start -->
-      <dd><%= movie.image %></dd>
+      <dd>
+        <div>
+          <%= render partial: "movies/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display image end -->
 
       <dt>Numbers of characters</dt>

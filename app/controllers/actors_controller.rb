@@ -4,6 +4,11 @@ class ActorsController < ApplicationController
   # GET /actors
   def index
     @actors = Actor.all
+    @location_hash = Gmaps4rails.build_markers(@actors.where.not(:image_latitude => nil)) do |actor, marker|
+      marker.lat actor.image_latitude
+      marker.lng actor.image_longitude
+      marker.infowindow "<h5><a href='/actors/#{actor.id}'>#{actor.name}</a></h5><small>#{actor.image_formatted_address}</small>"
+    end
   end
 
   # GET /actors/1

@@ -4,6 +4,11 @@ class MoviesController < ApplicationController
   # GET /movies
   def index
     @movies = Movie.all
+    @location_hash = Gmaps4rails.build_markers(@movies.where.not(:image_latitude => nil)) do |movie, marker|
+      marker.lat movie.image_latitude
+      marker.lng movie.image_longitude
+      marker.infowindow "<h5><a href='/movies/#{movie.id}'>#{movie.description}</a></h5><small>#{movie.image_formatted_address}</small>"
+    end
   end
 
   # GET /movies/1

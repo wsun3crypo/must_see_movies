@@ -22,7 +22,11 @@
 
       <dt>Image</dt>
       <!-- Display image start -->
-      <dd><%= director.image %></dd>
+      <dd>
+        <div>
+          <%= render partial: "directors/one_photo_map" %>
+        </div>
+      </dd>
       <!-- Display image end -->
 
     </dl>
