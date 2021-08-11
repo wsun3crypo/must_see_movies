@@ -1,0 +1,83 @@
+<% was_validated = character.errors.any? %>
+
+<%= form_with(model: character, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for name start -->
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = character.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+    <!-- Input for name start -->
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <!-- Input for name end -->
+    <% if name_was_invalid %>
+      <% character.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for name end -->
+  <!-- Label and input for movie_id start -->
+  <div class="form-group">
+    <% movie_class = "form-control" %>
+    <% movie_was_invalid = character.errors.include?(:movie) %>
+
+    <% if was_validated %>
+      <% if movie_was_invalid %>
+        <% movie_class << " is-invalid" %>
+      <% else %>
+        <% movie_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :movie_id %>
+    <!-- Input for movie_id start -->
+    <%= f.number_field :movie_id, class: movie_class, placeholder: "Enter movie" %>
+    <!-- Input for movie_id end -->
+    <% if movie_was_invalid %>
+      <% character.errors.full_messages_for(:movie).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for movie_id end -->
+  <!-- Label and input for actors_id start -->
+  <div class="form-group">
+    <% actor_class = "form-control" %>
+    <% actor_was_invalid = character.errors.include?(:actor) %>
+
+    <% if was_validated %>
+      <% if actor_was_invalid %>
+        <% actor_class << " is-invalid" %>
+      <% else %>
+        <% actor_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :actors_id %>
+    <!-- Input for actors_id start -->
+    <%= f.number_field :actors_id, class: actor_class, placeholder: "Enter actor" %>
+    <!-- Input for actors_id end -->
+    <% if actor_was_invalid %>
+      <% character.errors.full_messages_for(:actor).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for actors_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
