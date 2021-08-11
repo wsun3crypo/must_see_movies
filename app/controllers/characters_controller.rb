@@ -3,7 +3,7 @@ class CharactersController < ApplicationController
 
   # GET /characters
   def index
-    @characters = Character.all
+    @characters = Character.page(params[:page]).per(10)
   end
 
   # GET /characters/1

@@ -3,7 +3,7 @@ class DirectorsController < ApplicationController
 
   # GET /directors
   def index
-    @directors = Director.all
+    @directors = Director.page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@directors.where.not(:image_latitude => nil)) do |director, marker|
       marker.lat director.image_latitude
       marker.lng director.image_longitude
