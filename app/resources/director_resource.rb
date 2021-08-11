@@ -14,4 +14,12 @@ class DirectorResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :characters do
+    assign_each do |director, characters|
+      characters.select do |c|
+        c.id.in?(director.characters.map(&:id))
+      end
+    end
+  end
+
 end

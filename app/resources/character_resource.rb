@@ -15,4 +15,11 @@ class CharacterResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :director
+
+  filter :director_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:director).where(:movies => {:director_id => value})
+    end
+  end
 end
