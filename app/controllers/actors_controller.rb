@@ -3,7 +3,8 @@ class ActorsController < ApplicationController
 
   # GET /actors
   def index
-    @actors = Actor.page(params[:page]).per(10)
+    @q = Actor.ransack(params[:q])
+    @actors = @q.result(:distinct => true).includes(:roles, :movies).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@actors.where.not(:image_latitude => nil)) do |actor, marker|
       marker.lat actor.image_latitude
       marker.lng actor.image_longitude
