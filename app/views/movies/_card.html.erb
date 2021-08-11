@@ -6,47 +6,33 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= movie.description %></dd>
-      <!-- Display description end -->
 
       <dt>Director</dt>
-      <!-- Display director_id start -->
       <dd>
         <% if @movie.director.present? %>
           <%= link_to movie.director, movie.director %>
         <% end %>
       </dd>
-      <!-- Display director_id end -->
 
       <dt>Title</dt>
-      <!-- Display title start -->
       <dd><%= movie.title %></dd>
-      <!-- Display title end -->
 
       <dt>Year</dt>
-      <!-- Display year start -->
       <dd><%= movie.year %></dd>
-      <!-- Display year end -->
 
       <dt>Duration</dt>
-      <!-- Display duration start -->
       <dd><%= movie.duration %></dd>
-      <!-- Display duration end -->
 
       <dt>Image</dt>
-      <!-- Display image start -->
       <dd>
         <div>
           <%= render partial: "movies/one_photo_map" %>
         </div>
       </dd>
-      <!-- Display image end -->
 
       <dt>Numbers of characters</dt>
-      <!-- Display numbers_of_characters start -->
       <dd><%= movie.numbers_of_characters %></dd>
-      <!-- Display numbers_of_characters end -->
 
     </dl>
 
@@ -55,21 +41,17 @@
         <%= link_to_show_or_back movie, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link movie start -->
       <div class="col">
         <%= link_to edit_movie_url(movie), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link movie end -->
 
-      <!-- Delete link movie start -->
       <div class="col">
         <%= link_to movie, method: :delete, data: { confirm: "Do you really want to delete this movie?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link movie end -->
     </div>
   </div>
 
