@@ -12,6 +12,8 @@ RSpec.describe Character, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_one(:director) }
+
     end
 
     describe "Validations" do

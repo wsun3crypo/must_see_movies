@@ -8,6 +8,10 @@ class Character < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :director,
+             :through => :movie,
+             :source => :director
+
   # Validations
 
   # Scopes

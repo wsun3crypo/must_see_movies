@@ -10,6 +10,8 @@ RSpec.describe Director, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:characters) }
+
     end
 
     describe "Validations" do
