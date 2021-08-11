@@ -12,6 +12,9 @@ class MovieResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :roles,
+             resource: CharacterResource
+
   # Indirect associations
 
 end
