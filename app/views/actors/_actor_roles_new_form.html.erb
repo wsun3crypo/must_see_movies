@@ -17,7 +17,7 @@
     <%= f.label :movie_id %>
 
     <!-- Input for movie_id start -->
-    <%= f.text_field :movie_id, class: "form-control" %>
+    <%= f.collection_select :movie_id, Movie.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for movie_id end -->
   </div>
   <!-- Label and input for movie_id end -->
