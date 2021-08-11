@@ -12,7 +12,11 @@
 
       <dt>Director</dt>
       <!-- Display director_id start -->
-      <dd><%= movie.director_id %></dd>
+      <dd>
+        <% if @movie.director.present? %>
+          <%= link_to movie.director, movie.director %>
+        <% end %>
+      </dd>
       <!-- Display director_id end -->
 
       <dt>Title</dt>
