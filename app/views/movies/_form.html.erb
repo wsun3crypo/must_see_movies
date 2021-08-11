@@ -42,7 +42,7 @@
 
     <%= f.label :director_id %>
     <!-- Input for director_id start -->
-    <%= f.number_field :director_id, class: director_class, placeholder: "Enter director" %>
+    <%= f.collection_select :director_id, Director.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for director_id end -->
     <% if director_was_invalid %>
       <% movie.errors.full_messages_for(:director).each do |message| %>
